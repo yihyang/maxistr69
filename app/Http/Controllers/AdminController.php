@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Redirect;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -12,15 +12,20 @@ use Illuminate\Support\Facades\Session;
 class AdminController extends Controller {
 
     public function welcomeScreen() {
-      $sidebar = view('inc.sidebar');
-      $header = view('inc.header');
-      $footer = view('inc.footer');
+       if(Auth::user()) {
+           $sidebar = view('inc.sidebar');
+           $header = view('inc.header');
+           $footer = view('inc.footer');
 
-      return view("admin.dashboard.welcomeScreen")
-          ->with('header', $header)
-          ->with('sidebar', $sidebar)
-          ->with('footer', $footer)
-          ;
+           return view("admin.dashboard.welcomeScreen")
+               ->with('header', $header)
+               ->with('sidebar', $sidebar)
+               ->with('footer', $footer)
+               ;
+       } else {
+           Session::flash('message', 'You are not authorized!');
+           return Redirect::to('/');
+       }
    }
 
     public function downloadAttachment($fileName) {

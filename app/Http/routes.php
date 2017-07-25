@@ -17,7 +17,6 @@ Route::post("/login","LoginController@processLogin");
 Route::get("/login","LoginController@showLoginPage");
 Route::get("/logout","LoginController@processLogout");
 
-Route::get('/', 'AdminController@welcomeScreen');
 Route::get('/admin', 'AdminController@welcomeScreen');
 
 Route::get('/admin/broadband', 'TertiobroadbandController@index');

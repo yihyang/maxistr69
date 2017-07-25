@@ -15,7 +15,7 @@ class LoginController extends Controller
 
 
     public function showLoginPage() {
-        if(!Auth::check()) {
+        if(!Auth::user()) {
             return view("admin/login/index");
         } else {
             return Redirect::to('/admin/');
@@ -24,7 +24,7 @@ class LoginController extends Controller
 
 
     public function processLogin(Request $request) {
-        if(!Auth::check()) {
+        if(!Auth::user()) {
             $credentials = array(
                 'email' => $request->input('email'),
                 'password' => $request->input('password'),
@@ -39,9 +39,7 @@ class LoginController extends Controller
                 return Redirect::to('/')->withErrors($validator)->withInput();
             } else {
                 if (Auth::attempt($credentials)) {
-                    if(Auth::user()->role == 'ADMIN'){
-                        return Redirect::to('/admin/');
-                    }
+                    return Redirect::to('/admin/');
                 } else {
                     Session::flash('message', 'Invalid Credentials!');
                     return Redirect::to('/');
