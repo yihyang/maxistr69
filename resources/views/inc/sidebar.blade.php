@@ -11,7 +11,7 @@
                         <span class="clear">
                             <span class="block m-t-xs">
                                 <strong class="font-bold">
-                                  {{ Auth::user()->email}}
+                                  {{ Auth::user()->name}}
                                 </strong>
                             </span>
                             <span class="text-muted text-xs block">
