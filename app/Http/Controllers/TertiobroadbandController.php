@@ -24,21 +24,16 @@ class TertiobroadbandController extends Controller{
     }
 
     public function index() {
-        if(Auth::check() && Auth::user()->role == "ADMIN") {
-            $tertiobroadbands = $this->tertiobroadbandService->getAllTertiobroadband();
-            $sidebar = view('inc.sidebar');
-            $header = view('inc.header');
-            $footer = view('inc.footer');
+      $tertiobroadbands = $this->tertiobroadbandService->getAllTertiobroadband();
+      $sidebar = view('inc.sidebar');
+      $header = view('inc.header');
+      $footer = view('inc.footer');
 
-            return view("admin.tertiobroadband.index")
-                ->with('header', $header)
-                ->with('sidebar', $sidebar)
-                ->with('footer', $footer)
-                ->with('tertiobroadbands', $tertiobroadbands)
-                ;
-        } else {
-            Session::flash('message', 'You are not authorized!');
-            return Redirect::to('/');
-        }
+      return view("admin.tertiobroadband.index")
+          ->with('header', $header)
+          ->with('sidebar', $sidebar)
+          ->with('footer', $footer)
+          ->with('tertiobroadbands', $tertiobroadbands)
+          ;
     }
 }

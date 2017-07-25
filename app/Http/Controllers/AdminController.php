@@ -12,20 +12,15 @@ use Illuminate\Support\Facades\Session;
 class AdminController extends Controller {
 
     public function welcomeScreen() {
-       if(Auth::check() && Auth::user()->role == "ADMIN") {
-           $sidebar = view('inc.sidebar');
-           $header = view('inc.header');
-           $footer = view('inc.footer');
+      $sidebar = view('inc.sidebar');
+      $header = view('inc.header');
+      $footer = view('inc.footer');
 
-           return view("admin.dashboard.welcomeScreen")
-               ->with('header', $header)
-               ->with('sidebar', $sidebar)
-               ->with('footer', $footer)
-               ;
-       } else {
-           Session::flash('message', 'You are not authorized!');
-           return Redirect::to('/');
-       }
+      return view("admin.dashboard.welcomeScreen")
+          ->with('header', $header)
+          ->with('sidebar', $sidebar)
+          ->with('footer', $footer)
+          ;
    }
 
     public function downloadAttachment($fileName) {

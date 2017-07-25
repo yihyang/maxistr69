@@ -15,9 +15,8 @@ class ConfigServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		config([
-			//
-		]);
+		$this->app->bind('App\Services\TertiobroadbandService', 'App\Services\TertiobroadbandServiceImpl');
+		$this->app->bind('App\Services\ApplicantService', 'App\Services\ApplicantServiceImpl');
 	}
 
 }

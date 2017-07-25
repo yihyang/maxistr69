@@ -11,11 +11,9 @@
                         <span class="clear">
                             <span class="block m-t-xs">
                                 <strong class="font-bold">
-                                    {{Auth::User()->name}}
                                 </strong>
                             </span>
                             <span class="text-muted text-xs block">
-                                {{Auth::User()->role}}
                                 <b class="caret"></b>
                             </span>
                         </span>
