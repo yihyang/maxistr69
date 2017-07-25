@@ -19,4 +19,8 @@ class TertiobroadbandServiceImpl implements TertiobroadbandService {
         return $this->tertiobroadband->get();
     }
 
+    public function findTertiobroadbandById($id){
+        return $this->tertiobroadband->find($id);
+    }
+
 }

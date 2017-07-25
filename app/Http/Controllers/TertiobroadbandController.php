@@ -36,4 +36,22 @@ class TertiobroadbandController extends Controller{
           ->with('tertiobroadbands', $tertiobroadbands)
           ;
     }
+
+    public function showTertiobroadbandById($id) {
+        if(Auth::user()) {
+            $tertiobroadband = $this->tertiobroadbandService->findTertiobroadbandById($id);
+            $sidebar = view('inc.sidebar');
+            $header = view('inc.header');
+            $footer = view('inc.footer');
+            return view("admin.tertiobroadband.show")
+                ->with('header', $header)
+                ->with('sidebar', $sidebar)
+                ->with('footer', $footer)
+                ->with('tertiobroadband', $tertiobroadband)
+                ;
+        }else {
+            Session::flash('message', 'You are not authorized!');
+            return Redirect::to('/');
+        }
+    }
 }

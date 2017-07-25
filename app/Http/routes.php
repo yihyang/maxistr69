@@ -20,6 +20,7 @@ Route::get("/logout","LoginController@processLogout");
 Route::get('/admin', 'AdminController@welcomeScreen');
 
 Route::get('/admin/broadband', 'TertiobroadbandController@index');
+Route::get('/admin/broadband/show/{id}', 'TertiobroadbandController@showTertiobroadbandById');
 
 Route::get('/application-list', 'ApplicationController@listAllApplications');
 Route::get('/application-search', 'ApplicationController@showSearchView');

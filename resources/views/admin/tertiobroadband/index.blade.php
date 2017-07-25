@@ -49,6 +49,9 @@ Broadband List
                                     <td class="text-center">{{ $tertiobroadband->voipNo}}</td>
                                     <td class="text-center">{{ $tertiobroadband->status }}</td>
                                     <td class="text-center">
+                                      <a href="{{ URL::to('admin/broadband/show/'.$tertiobroadband->id) }}" class="btn btn-sm btn-success">
+                                        <i class="fa fa-eye"></i> View
+                                      </a>
                                     </td>
                                 </tr>
                             @endforeach
